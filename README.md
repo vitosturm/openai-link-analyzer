@@ -16,7 +16,7 @@ Follow the [standard Discourse plugin installation procedure](https://meta.disco
 
 ```sh
 cd /var/discourse
-git clone https://github.com/yourusername/openai-link-analyzer.git plugins/openai-link-analyzer
+git clone https://github.com/vitosturm/openai-link-analyzer.git plugins/openai-link-analyzer
 ./launcher rebuild app
 ```
 

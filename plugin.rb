@@ -4,7 +4,7 @@
 # about: Analyzes URLs using OpenAI and creates summaries with automated topic creation
 # version: 0.1
 # authors: Your Name
-# url: https://github.com/yourusername/openai-link-analyzer
+# url: https://github.com/vitosturm/openai-link-analyzer
 
 enabled_site_setting :openai_link_analyzer_enabled
 register_asset "stylesheets/common/openai-link-analyzer.scss"
