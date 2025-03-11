@@ -1,0 +1,18 @@
+en:
+  js:
+    openai_link_analyzer:
+      title: "OpenAI Link Analyzer"
+      description: "Enter a URL to analyze its content and create a topic with a summary."
+      url_label: "URL"
+      url_placeholder: "https://example.com/article"
+      category_label: "Category for new topic"
+      analyze_button: "Analyze and Create Topic"
+      result_title: "Analysis Result"
+      view_topic: "View Topic"
+      plugin_disabled: "The OpenAI Link Analyzer plugin is currently disabled. Please contact an administrator to enable it."
+      
+      errors:
+        url_required: "Please enter a URL"
+        category_required: "Please select a category"
+        api_error: "OpenAI API error: {{error}}"
+        fetch_error: "Error fetching content: {{error}}" 

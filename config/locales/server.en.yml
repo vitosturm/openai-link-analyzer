@@ -1,0 +1,5 @@
+en:
+  site_settings:
+    openai_link_analyzer_enabled: "Enable OpenAI Link Analyzer plugin"
+    openai_api_key: "OpenAI API Key"
+    openai_model: "OpenAI Model to use for analysis" 

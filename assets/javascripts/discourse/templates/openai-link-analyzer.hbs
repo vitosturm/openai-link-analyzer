@@ -1,0 +1,69 @@
+{{#if this.siteSettings.openai_link_analyzer_enabled}}
+  <div class="openai-link-analyzer">
+    <h2>{{i18n "openai_link_analyzer.title"}}</h2>
+    <p class="description">{{i18n "openai_link_analyzer.description"}}</p>
+    
+    <form class="analyzer-form" {{on "submit" (fn (prevent-default this.analyzeUrl))}}>
+      <div class="input-group">
+        <label for="url-input">{{i18n "openai_link_analyzer.url_label"}}</label>
+        <input 
+          id="url-input"
+          type="url" 
+          value={{this.url}}
+          placeholder={{i18n "openai_link_analyzer.url_placeholder"}}
+          {{on "input" this.updateUrl}}
+        />
+      </div>
+      
+      <div class="input-group">
+        <label for="category-selector">{{i18n "openai_link_analyzer.category_label"}}</label>
+        <CategorySelector
+          @categories={{this.categories}}
+          @value={{this.selectedCategoryId}}
+          @onChange={{this.updateCategory}}
+        />
+      </div>
+      
+      <DButton
+        @label="openai_link_analyzer.analyze_button"
+        @disabled={{or (not this.url) (not this.selectedCategoryId) this.isProcessing}}
+        @isLoading={{this.isProcessing}}
+        @type="submit"
+        class="btn-primary"
+      />
+    </form>
+    
+    {{#if this.lastError}}
+      <div class="error-message">
+        <div class="error-icon">{{d-icon "exclamation-triangle"}}</div>
+        <div class="error-text">{{this.lastError}}</div>
+      </div>
+    {{/if}}
+    
+    {{#if this.lastResult}}
+      <div class="result-container">
+        <h3>{{i18n "openai_link_analyzer.result_title"}}</h3>
+        
+        <div class="result-card">
+          <div class="result-header">
+            <h4>{{this.lastResult.title}}</h4>
+          </div>
+          
+          <div class="result-body">
+            <p>{{this.lastResult.summary}}</p>
+          </div>
+          
+          <div class="result-footer">
+            <a href={{this.lastResult.topic_url}} class="btn btn-primary">
+              {{i18n "openai_link_analyzer.view_topic"}}
+            </a>
+          </div>
+        </div>
+      </div>
+    {{/if}}
+  </div>
+{{else}}
+  <div class="openai-link-analyzer-disabled">
+    <p>{{i18n "openai_link_analyzer.plugin_disabled"}}</p>
+  </div>
+{{/if}} 

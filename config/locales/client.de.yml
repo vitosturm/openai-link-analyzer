@@ -1,0 +1,18 @@
+de:
+  js:
+    openai_link_analyzer:
+      title: "OpenAI Link-Analyzer"
+      description: "Geben Sie eine URL ein, um deren Inhalt zu analysieren und ein Thema mit einer Zusammenfassung zu erstellen."
+      url_label: "URL"
+      url_placeholder: "https://beispiel.de/artikel"
+      category_label: "Kategorie für neues Thema"
+      analyze_button: "Analysieren und Thema erstellen"
+      result_title: "Analyseergebnis"
+      view_topic: "Thema ansehen"
+      plugin_disabled: "Das OpenAI Link-Analyzer Plugin ist derzeit deaktiviert. Bitte kontaktieren Sie einen Administrator, um es zu aktivieren."
+      
+      errors:
+        url_required: "Bitte geben Sie eine URL ein"
+        category_required: "Bitte wählen Sie eine Kategorie aus"
+        api_error: "OpenAI API-Fehler: {{error}}"
+        fetch_error: "Fehler beim Abrufen des Inhalts: {{error}}" 
