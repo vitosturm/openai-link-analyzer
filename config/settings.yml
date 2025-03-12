@@ -1,13 +1,12 @@
-plugins:
-  openai_link_analyzer_enabled:
-    default: false
-    client: true
-  openai_api_key:
-    default: ""
-    secret: true
-  openai_model:
-    default: "gpt-4"
-    enum:
-      - "gpt-3.5-turbo"
-      - "gpt-4"
-      - "gpt-4-turbo" 
+openai_link_analyzer_enabled:
+  default: false
+  client: true
+openai_api_key:
+  default: ""
+  secret: true
+openai_model:
+  default: "gpt-4"
+  enum:
+    - "gpt-3.5-turbo"
+    - "gpt-4"
+    - "gpt-4-turbo" 
