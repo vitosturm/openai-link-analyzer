@@ -17,10 +17,6 @@ module ::OpenaiLinkAnalyzer
     engine_name PLUGIN_NAME
     isolate_namespace OpenaiLinkAnalyzer
   end
-
-  class AnalysisStatistic < ActiveRecord::Base
-    self.table_name = "openai_link_analyzer_statistics"
-  end
 end
 
 after_initialize do
