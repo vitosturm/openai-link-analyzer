@@ -1,4 +1,4 @@
-# **Plugin Name** Plugin
+# **Openai Link Analyzer** Plugin
 
 **Plugin Summary**
 

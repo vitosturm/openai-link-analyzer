@@ -1,4 +1,4 @@
-TODO_plugin_name:
-  plugin_name_enabled:
+openai_link_analyzer:
+  openai_link_analyzer_enabled:
     default: false
     client: true

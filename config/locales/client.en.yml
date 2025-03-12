@@ -3,7 +3,7 @@ en:
     admin:
       site_settings:
         categories:
-          TODO_plugin_name: "Plugin Name"
+          openai_link_analyzer: "Openai Link Analyzer"
   js:
-    discourse_plugin_name:
+    openai_link_analyzer:
       placeholder: placeholder
