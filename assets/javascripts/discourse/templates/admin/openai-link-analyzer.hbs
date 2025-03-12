@@ -1,0 +1,115 @@
+{{#if this.siteSettings.openai_link_analyzer_enabled}}
+  <div class="openai-link-analyzer-admin">
+    <h2>{{i18n "openai_link_analyzer.admin.title"}}</h2>
+    <p class="description">{{i18n "openai_link_analyzer.admin.description"}}</p>
+    
+    <div class="admin-controls">
+      <div class="admin-actions">
+        <h3>{{i18n "openai_link_analyzer.admin.actions"}}</h3>
+        <div class="controls">
+          <DButton
+            @action={{this.testApiConnection}}
+            @icon="plug"
+            @label="openai_link_analyzer.admin.test_api"
+            class="btn-default"
+          />
+          
+          <DButton
+            @action={{this.loadStats}}
+            @icon="sync"
+            @label="openai_link_analyzer.admin.refresh_stats"
+            @disabled={{this.isLoading}}
+            @isLoading={{this.isLoading}}
+            class="btn-default"
+          />
+          
+          <DButton
+            @action={{this.clearStats}}
+            @icon="trash-alt"
+            @label="openai_link_analyzer.admin.clear_stats"
+            class="btn-danger"
+          />
+        </div>
+      </div>
+      
+      <div class="admin-settings">
+        <h3>{{i18n "openai_link_analyzer.admin.settings"}}</h3>
+        <p>
+          {{i18n "openai_link_analyzer.admin.manage_settings_instruction"}}
+          <a href="/admin/site_settings/category/plugins?filter=openai_link_analyzer">
+            {{i18n "openai_link_analyzer.admin.settings_link"}}
+          </a>
+        </p>
+      </div>
+    </div>
+    
+    <div class="stats-section">
+      <h3>{{i18n "openai_link_analyzer.admin.stats"}}</h3>
+      
+      {{#if this.isLoading}}
+        <div class="loading-indicator">
+          {{loading-spinner size="small"}}
+          <span>{{i18n "openai_link_analyzer.admin.loading_stats"}}</span>
+        </div>
+      {{else}}
+        <div class="stats-grid">
+          <div class="stat-card">
+            <h4>{{i18n "openai_link_analyzer.admin.total_analyzed"}}</h4>
+            <div class="stat-value">{{this.stats.totalAnalyzed}}</div>
+          </div>
+          
+          <div class="stat-card">
+            <h4>{{i18n "openai_link_analyzer.admin.success_rate"}}</h4>
+            <div class="stat-value">{{this.stats.successRate}}</div>
+          </div>
+          
+          <div class="stat-card">
+            <h4>{{i18n "openai_link_analyzer.admin.last_analyzed"}}</h4>
+            <div class="stat-value">
+              {{#if this.stats.lastAnalyzed}}
+                {{format-date this.stats.lastAnalyzed}}
+              {{else}}
+                {{i18n "openai_link_analyzer.admin.no_analyses"}}
+              {{/if}}
+            </div>
+          </div>
+        </div>
+        
+        <div class="popular-categories">
+          <h4>{{i18n "openai_link_analyzer.admin.popular_categories"}}</h4>
+          
+          {{#if this.stats.popularCategories.length}}
+            <table>
+              <thead>
+                <tr>
+                  <th>{{i18n "openai_link_analyzer.admin.category_name"}}</th>
+                  <th>{{i18n "openai_link_analyzer.admin.analysis_count"}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each this.stats.popularCategories as |category|}}
+                  <tr>
+                    <td>{{category.name}}</td>
+                    <td>{{category.count}}</td>
+                  </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          {{else}}
+            <p class="no-data">{{i18n "openai_link_analyzer.admin.no_categories"}}</p>
+          {{/if}}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+{{else}}
+  <div class="openai-link-analyzer-disabled">
+    <p>{{i18n "openai_link_analyzer.plugin_disabled"}}</p>
+    <p>
+      {{i18n "openai_link_analyzer.admin.enable_instruction"}}
+      <a href="/admin/site_settings/category/plugins?filter=openai_link_analyzer">
+        {{i18n "openai_link_analyzer.admin.settings_link"}}
+      </a>
+    </p>
+  </div>
+{{/if}} 

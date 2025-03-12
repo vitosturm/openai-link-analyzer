@@ -103,4 +103,129 @@
     margin: 0;
     color: var(--primary-medium);
   }
+}
+
+// Admin Styles
+.openai-link-analyzer-admin {
+  margin: 1em 0;
+  
+  .description {
+    color: var(--primary-medium);
+    margin-bottom: 1.5em;
+  }
+  
+  .admin-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    margin-bottom: 2em;
+    
+    .admin-actions, .admin-settings {
+      flex: 1;
+      min-width: 300px;
+      background: var(--secondary);
+      border: 1px solid var(--primary-low);
+      border-radius: 0.25em;
+      padding: 1em;
+    }
+    
+    h3 {
+      margin-top: 0;
+      margin-bottom: 1em;
+      font-size: 1.2em;
+    }
+    
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em;
+    }
+  }
+  
+  .stats-section {
+    background: var(--secondary);
+    border: 1px solid var(--primary-low);
+    border-radius: 0.25em;
+    padding: 1em;
+    
+    h3 {
+      margin-top: 0;
+      margin-bottom: 1em;
+      font-size: 1.2em;
+    }
+    
+    .loading-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5em;
+      padding: 2em;
+      color: var(--primary-medium);
+    }
+    
+    .stats-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      margin-bottom: 2em;
+      
+      .stat-card {
+        flex: 1;
+        min-width: 150px;
+        background: var(--primary-very-low);
+        border: 1px solid var(--primary-low);
+        border-radius: 0.25em;
+        padding: 1em;
+        text-align: center;
+        
+        h4 {
+          margin: 0 0 0.5em 0;
+          font-size: 1em;
+          color: var(--primary-medium);
+        }
+        
+        .stat-value {
+          font-size: 2em;
+          font-weight: bold;
+        }
+      }
+    }
+    
+    .popular-categories {
+      h4 {
+        margin-top: 0;
+        margin-bottom: 1em;
+        font-size: 1em;
+      }
+      
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        
+        th, td {
+          padding: 0.5em;
+          text-align: left;
+          border-bottom: 1px solid var(--primary-low);
+        }
+        
+        th {
+          font-weight: bold;
+          background: var(--primary-very-low);
+        }
+      }
+      
+      .no-data {
+        color: var(--primary-medium);
+        text-align: center;
+        padding: 1em;
+      }
+    }
+  }
+}
+
+// Header button
+.link-analyzer-button {
+  .d-icon {
+    color: var(--tertiary);
+  }
 } 

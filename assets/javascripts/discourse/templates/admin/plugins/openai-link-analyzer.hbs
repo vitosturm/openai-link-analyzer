@@ -1,0 +1,94 @@
+<AdminNav>
+  <NavItem @route="adminPlugins.openaiLinkAnalyzer" @label="admin.openai_link_analyzer.title" />
+</AdminNav>
+
+<div class="openai-link-analyzer-admin">
+  <h1>{{i18n "admin.openai_link_analyzer.title"}}</h1>
+  <p class="description">{{i18n "admin.openai_link_analyzer.description"}}</p>
+  
+  <div class="admin-controls">
+    <div class="buttons">
+      <DButton 
+        @action={{this.openSettings}}
+        @icon="cog" 
+        @label="admin.openai_link_analyzer.settings_button" 
+        class="btn-default"
+      />
+      
+      <DButton 
+        @action={{this.testAPIConnection}}
+        @icon="plug" 
+        @label="admin.openai_link_analyzer.test_connection" 
+        @isLoading={{this.testingAPI}}
+        class="btn-primary"
+      />
+      
+      <DButton 
+        @action={{this.clearStatistics}}
+        @icon="trash-alt" 
+        @label="admin.openai_link_analyzer.clear_stats" 
+        class="btn-danger"
+        @disabled={{not this.stats}}
+      />
+    </div>
+  </div>
+  
+  {{#if this.apiTestResult}}
+    <div class="api-test-result {{if this.apiTestResult.success 'success' 'error'}}">
+      {{d-icon (if this.apiTestResult.success "check-circle" "times-circle")}}
+      <span>{{this.apiTestResult.message}}</span>
+    </div>
+  {{/if}}
+  
+  <div class="admin-section">
+    <h2>{{i18n "admin.openai_link_analyzer.statistics"}}</h2>
+    
+    {{#if this.loading}}
+      <div class="spinner medium"></div>
+    {{else if this.stats}}
+      <div class="stats-cards">
+        <div class="stat-card">
+          <div class="stat-value">{{this.stats.total_analyzed}}</div>
+          <div class="stat-label">{{i18n "admin.openai_link_analyzer.total_links_analyzed"}}</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-value">{{this.stats.success_rate}}%</div>
+          <div class="stat-label">{{i18n "admin.openai_link_analyzer.success_rate"}}</div>
+        </div>
+        
+        {{#if this.stats.last_analyzed}}
+          <div class="stat-card">
+            <div class="stat-value">{{format-date this.stats.last_analyzed format="medium"}}</div>
+            <div class="stat-label">{{i18n "admin.openai_link_analyzer.last_analyzed"}}</div>
+          </div>
+        {{/if}}
+      </div>
+      
+      {{#if this.stats.popular_categories.length}}
+        <div class="popular-categories">
+          <h3>{{i18n "admin.openai_link_analyzer.popular_categories"}}</h3>
+          
+          <table class="table">
+            <thead>
+              <tr>
+                <th>{{i18n "admin.openai_link_analyzer.category"}}</th>
+                <th>{{i18n "admin.openai_link_analyzer.analysis_count"}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each this.stats.popular_categories as |category|}}
+                <tr>
+                  <td>{{category.name}}</td>
+                  <td>{{category.count}}</td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      {{/if}}
+    {{else}}
+      <p class="no-stats">{{i18n "admin.openai_link_analyzer.no_stats"}}</p>
+    {{/if}}
+  </div>
+</div> 
