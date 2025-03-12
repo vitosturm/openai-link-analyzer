@@ -1,0 +1,186 @@
+.openai-link-analyzer-container {
+  margin: 1em 0;
+  padding: 1.5em;
+  background-color: var(--secondary);
+  border-radius: 0.5em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  
+  h2 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    color: var(--primary);
+  }
+  
+  .description {
+    margin-bottom: 1.5em;
+    color: var(--primary-medium);
+  }
+  
+  .analyzer-form {
+    margin-bottom: 1.5em;
+    
+    .input-group {
+      margin-bottom: 1em;
+      
+      label {
+        display: block;
+        margin-bottom: 0.5em;
+        font-weight: bold;
+        color: var(--primary);
+      }
+      
+      input[type="url"] {
+        width: 100%;
+        padding: 0.5em;
+        border: 1px solid var(--primary-low);
+        border-radius: 0.25em;
+        
+        &:focus {
+          border-color: var(--tertiary);
+          outline: none;
+          box-shadow: 0 0 0 2px rgba(var(--tertiary-rgb), 0.2);
+        }
+      }
+    }
+    
+    .analyze-button {
+      margin-top: 0.5em;
+    }
+  }
+  
+  .alert {
+    padding: 1em;
+    margin-bottom: 1.5em;
+    border-radius: 0.25em;
+    
+    &.alert-error {
+      background-color: rgba(var(--danger-rgb), 0.1);
+      color: var(--danger);
+      border: 1px solid rgba(var(--danger-rgb), 0.2);
+    }
+  }
+  
+  .result-card {
+    background-color: var(--secondary-very-high);
+    border: 1px solid var(--primary-low);
+    border-radius: 0.25em;
+    padding: 1.5em;
+    
+    h3 {
+      margin-top: 0;
+      margin-bottom: 1em;
+      color: var(--primary);
+    }
+    
+    .result-content {
+      h4 {
+        margin-top: 0;
+        margin-bottom: 0.5em;
+        color: var(--primary);
+      }
+      
+      p {
+        margin-bottom: 1em;
+        color: var(--primary-high);
+      }
+    }
+  }
+}
+
+.openai-link-analyzer-disabled {
+  margin: 1em 0;
+  padding: 1.5em;
+  background-color: var(--secondary);
+  border-radius: 0.5em;
+  text-align: center;
+  
+  p {
+    color: var(--primary-medium);
+  }
+}
+
+// Admin styles
+.admin-openai-link-analyzer {
+  margin: 1em 0;
+  
+  h1 {
+    margin-bottom: 1em;
+  }
+  
+  .admin-controls {
+    display: flex;
+    gap: 0.5em;
+    margin-bottom: 1.5em;
+  }
+  
+  .api-test-result {
+    padding: 1em;
+    margin-bottom: 1.5em;
+    border-radius: 0.25em;
+    
+    &.success {
+      background-color: rgba(var(--success-rgb), 0.1);
+      color: var(--success);
+      border: 1px solid rgba(var(--success-rgb), 0.2);
+    }
+    
+    &.error {
+      background-color: rgba(var(--danger-rgb), 0.1);
+      color: var(--danger);
+      border: 1px solid rgba(var(--danger-rgb), 0.2);
+    }
+  }
+  
+  .statistics-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    margin-bottom: 1.5em;
+    
+    .statistic-card {
+      flex: 1;
+      min-width: 200px;
+      background-color: var(--secondary);
+      border: 1px solid var(--primary-low);
+      border-radius: 0.25em;
+      padding: 1.5em;
+      
+      h3 {
+        margin-top: 0;
+        margin-bottom: 0.5em;
+        color: var(--primary);
+        font-size: 1em;
+      }
+      
+      .statistic-value {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: var(--tertiary);
+        
+        ul {
+          font-size: 0.7em;
+          margin: 0;
+          padding-left: 1.5em;
+          
+          li {
+            margin-bottom: 0.25em;
+          }
+        }
+      }
+    }
+  }
+  
+  .spinner {
+    margin: 2em auto;
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(var(--tertiary-rgb), 0.3);
+    border-radius: 50%;
+    border-top-color: var(--tertiary);
+    animation: spin 1s ease-in-out infinite;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+} 

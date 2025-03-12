@@ -1,1 +1,16 @@
 en:
+  site_settings:
+    openai_link_analyzer_enabled: "Enable the OpenAI Link Analyzer plugin"
+    openai_api_key: "OpenAI API key for the Link Analyzer plugin"
+    openai_model: "OpenAI model to use for analyzing links"
+  openai_link_analyzer:
+    errors:
+      missing_api_key: "OpenAI API key is not configured"
+      invalid_url: "Invalid URL provided"
+      invalid_category: "Invalid category selected"
+      failed_to_fetch_content: "Failed to fetch URL content (Error: %{code})"
+      plugin_disabled: "OpenAI Link Analyzer plugin is disabled"
+      analysis_failed: "Failed to analyze content"
+      topic_creation_failed: "Failed to create topic"
+    original_url: "Original URL"
+    unknown_category: "Unknown category"

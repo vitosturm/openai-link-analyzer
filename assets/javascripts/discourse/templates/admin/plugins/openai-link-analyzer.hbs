@@ -1,0 +1,81 @@
+<AdminNav>
+  <NavItem @route="adminPlugins.openaiLinkAnalyzer" @label="openai_link_analyzer.title" />
+</AdminNav>
+
+<div class="admin-openai-link-analyzer">
+  <h1>{{i18n "openai_link_analyzer.admin.title"}}</h1>
+  
+  <div class="admin-controls">
+    <DButton
+      @action={{action "openSettings"}}
+      @icon="cog"
+      @label="openai_link_analyzer.admin.settings_button"
+      class="btn-default"
+    />
+    
+    <DButton
+      @action={{action "testApi"}}
+      @icon="plug"
+      @label="openai_link_analyzer.admin.test_api_button"
+      @disabled={{isLoading}}
+      class="btn-default"
+    />
+    
+    <DButton
+      @action={{action "clearStatistics"}}
+      @icon="trash-alt"
+      @label="openai_link_analyzer.admin.clear_stats_button"
+      @disabled={{isLoading}}
+      class="btn-danger"
+    />
+  </div>
+  
+  {{#if apiTestResult}}
+    <div class="api-test-result {{if apiTestResult.success 'success' 'error'}}">
+      {{#if apiTestResult.success}}
+        <p>{{i18n "openai_link_analyzer.admin.api_test_success"}}</p>
+      {{else}}
+        <p>{{i18n "openai_link_analyzer.admin.api_test_error"}}: {{apiTestResult.error}}</p>
+      {{/if}}
+    </div>
+  {{/if}}
+  
+  {{#if isLoading}}
+    <div class="spinner"></div>
+  {{else if statistics}}
+    <div class="statistics-cards">
+      <div class="statistic-card">
+        <h3>{{i18n "openai_link_analyzer.admin.total_analyzed"}}</h3>
+        <div class="statistic-value">{{statistics.total_analyzed}}</div>
+      </div>
+      
+      <div class="statistic-card">
+        <h3>{{i18n "openai_link_analyzer.admin.success_rate"}}</h3>
+        <div class="statistic-value">
+          {{#if statistics.total_analyzed}}
+            {{round (mult (div statistics.success_count statistics.total_analyzed) 100)}}%
+          {{else}}
+            0%
+          {{/if}}
+        </div>
+      </div>
+      
+      <div class="statistic-card">
+        <h3>{{i18n "openai_link_analyzer.admin.popular_categories"}}</h3>
+        <div class="statistic-value">
+          {{#if statistics.popular_categories}}
+            <ul>
+              {{#each-in statistics.popular_categories as |name count|}}
+                <li>{{name}}: {{count}}</li>
+              {{/each-in}}
+            </ul>
+          {{else}}
+            {{i18n "openai_link_analyzer.admin.no_categories"}}
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  {{else}}
+    <p>{{i18n "openai_link_analyzer.admin.no_statistics"}}</p>
+  {{/if}}
+</div> 

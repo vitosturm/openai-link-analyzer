@@ -1,0 +1,64 @@
+{{#if siteSettings.openai_link_analyzer_enabled}}
+  <div class="openai-link-analyzer-container">
+    <h2>{{i18n "openai_link_analyzer.title"}}</h2>
+    <p class="description">{{i18n "openai_link_analyzer.description"}}</p>
+    
+    <div class="analyzer-form">
+      <div class="input-group">
+        <label for="url-input">{{i18n "openai_link_analyzer.url_label"}}</label>
+        <input 
+          id="url-input"
+          type="url" 
+          value={{url}}
+          placeholder={{i18n "openai_link_analyzer.url_placeholder"}}
+          {{action "updateUrl" on="input"}}
+        >
+      </div>
+      
+      <div class="input-group">
+        <label for="category-selector">{{i18n "openai_link_analyzer.category_label"}}</label>
+        <CategoryChooser
+          @value={{categoryId}}
+          @onChange={{action "updateCategory"}}
+          @options={{hash
+            allowUncategorized=false
+          }}
+        />
+      </div>
+      
+      <DButton
+        @action={{action "analyzeUrl"}}
+        @disabled={{isAnalyzing}}
+        @label={{if isAnalyzing "openai_link_analyzer.analyzing" "openai_link_analyzer.analyze_button"}}
+        @icon="search"
+        class="btn-primary analyze-button"
+      />
+    </div>
+    
+    {{#if lastError}}
+      <div class="alert alert-error">
+        {{lastError}}
+      </div>
+    {{/if}}
+    
+    {{#if lastResult}}
+      <div class="result-card">
+        <h3>{{i18n "openai_link_analyzer.result_title"}}</h3>
+        <div class="result-content">
+          <h4>{{lastResult.title}}</h4>
+          <p>{{lastResult.summary}}</p>
+          <DButton
+            @action={{action "viewTopic"}}
+            @label="openai_link_analyzer.view_topic"
+            @icon="external-link-alt"
+            class="btn-primary view-topic-button"
+          />
+        </div>
+      </div>
+    {{/if}}
+  </div>
+{{else}}
+  <div class="openai-link-analyzer-disabled">
+    <p>{{i18n "openai_link_analyzer.disabled_message"}}</p>
+  </div>
+{{/if}} 

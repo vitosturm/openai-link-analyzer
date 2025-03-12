@@ -3,7 +3,36 @@ en:
     admin:
       site_settings:
         categories:
-          openai_link_analyzer: "Openai Link Analyzer"
+          plugins: "Plugins"
+          openai_link_analyzer: "OpenAI Link Analyzer"
   js:
     openai_link_analyzer:
-      placeholder: placeholder
+      title: "OpenAI Link Analyzer"
+      description: "Analyze web links with OpenAI and create topics with summaries"
+      url_label: "URL to analyze"
+      url_placeholder: "https://example.com"
+      category_label: "Select category for new topic"
+      analyze_button: "Analyze and Create Topic"
+      analyzing: "Analyzing..."
+      result_title: "Analysis Result"
+      view_topic: "View Topic"
+      disabled_message: "OpenAI Link Analyzer is currently disabled. Please contact an administrator to enable it."
+      
+      errors:
+        url_required: "URL is required"
+        category_required: "Category is required"
+        unknown_error: "An unknown error occurred"
+      
+      admin:
+        title: "OpenAI Link Analyzer Admin"
+        settings_button: "Plugin Settings"
+        test_api_button: "Test API Connection"
+        clear_stats_button: "Clear Statistics"
+        confirm_clear_stats: "Are you sure you want to clear all statistics? This cannot be undone."
+        api_test_success: "API connection successful"
+        api_test_error: "API connection failed"
+        total_analyzed: "Total Analyzed Links"
+        success_rate: "Success Rate"
+        popular_categories: "Popular Categories"
+        no_categories: "No categories"
+        no_statistics: "No statistics available"
