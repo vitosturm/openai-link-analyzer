@@ -70,19 +70,4 @@ after_initialize do
     get '/test_api' => 'analyzer#test_api'
     get '/categories' => 'analyzer#categories'
   end
-
-  # Ensure we have a table for analysis statistics
-  on_next_migration do
-    unless ActiveRecord::Base.connection.table_exists?(:openai_link_analyzer_statistics)
-      ActiveRecord::Base.connection.create_table(:openai_link_analyzer_statistics) do |t|
-        t.datetime :analyzed_at, null: false
-        t.integer :category_id, null: false
-        t.boolean :success, null: false, default: false
-        t.timestamps null: false
-      end
-      
-      ActiveRecord::Base.connection.add_index :openai_link_analyzer_statistics, :analyzed_at
-      ActiveRecord::Base.connection.add_index :openai_link_analyzer_statistics, :category_id
-    end
-  end
 end 
