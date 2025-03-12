@@ -20,6 +20,11 @@ end
 
 require_relative "lib/openai_link_analyzer/engine"
 
+# Mount the engine
+Discourse::Application.routes.append do
+  mount ::OpenaiLinkAnalyzer::Engine, at: "openai-link-analyzer"
+end
+
 after_initialize do
   # Add controllers and helpers
   load File.expand_path('../app/controllers/openai_link_analyzer/analyzer_controller.rb', __FILE__)

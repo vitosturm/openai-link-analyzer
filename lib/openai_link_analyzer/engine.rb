@@ -9,11 +9,5 @@ module OpenaiLinkAnalyzer
     config.to_prepare do
       Rails.autoloaders.main.eager_load_dir(scheduled_job_dir) if Dir.exist?(scheduled_job_dir)
     end
-
-    config.after_initialize do
-      Discourse::Application.routes.append do
-        mount ::OpenaiLinkAnalyzer::Engine, at: "openai-link-analyzer"
-      end
-    end
   end
 end

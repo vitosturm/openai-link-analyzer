@@ -8,5 +8,3 @@ OpenaiLinkAnalyzer::Engine.routes.draw do
   get '/categories' => 'analyzer#categories'
   # define routes here
 end
-
-Discourse::Application.routes.draw { mount ::OpenaiLinkAnalyzer::Engine, at: "openai-link-analyzer" }
